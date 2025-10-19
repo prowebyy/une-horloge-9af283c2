@@ -1,0 +1,61 @@
+/* Styles personnalisés pour l'horloge */
+
+/* Animation fluide pour les aiguilles */
+#hour-hand,
+#minute-hand,
+#second-hand {
+    transition: transform 0.3s cubic-bezier(0.4, 2.3, 0.8, 1);
+}
+
+/* Effet de brillance sur le cadran */
+.bg-white\/10 {
+    position: relative;
+}
+
+.bg-white\/10::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    border-radius: inherit;
+    z-index: -1;
+    animation: shine 3s ease-in-out infinite;
+}
+
+@keyframes shine {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+/* Effet de pulsation pour l'horloge numérique */
+#digital-clock {
+    text-shadow: 0 0 10px rgba(255,255,255,0.5);
+    animation: pulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+    from { text-shadow: 0 0 10px rgba(255,255,255,0.5); }
+    to { text-shadow: 0 0 20px rgba(255,255,255,0.8); }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .w-80 { width: 16rem; }
+    .h-80 { height: 16rem; }
+    .text-6xl { font-size: 3rem; }
+    .h-20 { height: 5rem; }
+    .h-32 { height: 8rem; }
+    .h-36 { height: 9rem; }
+}
+
+@media (max-width: 480px) {
+    .w-80 { width: 12rem; }
+    .h-80 { height: 12rem; }
+    .text-6xl { font-size: 2rem; }
+    .h-20 { height: 3rem; }
+    .h-32 { height: 6rem; }
+    .h-36 { height: 7rem; }
+}
